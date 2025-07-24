@@ -162,6 +162,97 @@ taskmaster-api/
 
 ---
 
+## 🧪 How to Test All Routes
+
+### 🔐 Step 1: Register & Login
+
+1. Register
+    ```http
+    POST /api/users/register
+    Content-Type: application/json
+    ```
+    ```json
+    {
+      "username": "testuser",
+      "email": "test@example.com",
+      "password": "123456"
+    }
+    ```
+
+2. Login
+    ```http
+    POST /api/users/login
+    ```
+    → Save the returned token.
+
+---
+
+### 📁 Step 2: Test Project Routes
+
+Add the following header to all requests:
+```
+Authorization: Bearer <your_token>
+```
+
+- Create Project:
+  ```http
+  POST /api/projects
+  ```
+  ```json
+  {
+    "name": "My Project",
+    "description": "Test project"
+  }
+  ```
+
+- Get All Projects:
+  ```http
+  GET /api/projects
+  ```
+
+- Update Project:
+  ```http
+  PUT /api/projects/:id
+  ```
+
+- Delete Project:
+  ```http
+  DELETE /api/projects/:id
+  ```
+
+---
+
+### ✅ Step 3: Test Task Routes
+
+- Create Task:
+  ```http
+  POST /api/projects/:projectId/tasks
+  ```
+  ```json
+  {
+    "title": "First Task",
+    "description": "Write docs",
+    "status": "To Do"
+  }
+  ```
+
+- Get Tasks:
+  ```http
+  GET /api/projects/:projectId/tasks
+  ```
+
+- Update Task:
+  ```http
+  PUT /api/tasks/:taskId
+  ```
+
+- Delete Task:
+  ```http
+  DELETE /api/tasks/:taskId
+  ```
+
+---
+
 ## 🧑🏿‍💻 Author
 
 Created by **Yusuf Bolden**. Feedback and collaboration welcome!

@@ -102,28 +102,64 @@ taskmaster-api/
   - Clean separation of concerns
 
 ---
-```
-📮 API Endpoints
-👤 Users
-🔧 Method	🛣️ Endpoint	📄 Description	🔐 Auth Required
-POST	/api/users/register	Create a new user account	❌
-POST	/api/users/login	Authenticate and get token	❌
+## 📮 API Reference
 
-📁 Projects
-🔧 Method	🛣️ Endpoint	📄 Description	🔐 Auth Required
-POST	/api/projects	Create a new project	✅
-GET	/api/projects	Get all projects owned by user	✅
-GET	/api/projects/:id	Get a specific project by ID	✅
-PUT	/api/projects/:id	Update a project by ID	✅
-DELETE	/api/projects/:id	Delete a project by ID	✅
+### 👤 User Routes
 
-✅ Tasks
-🔧 Method	🛣️ Endpoint	📄 Description	🔐 Auth Required
-POST	/api/projects/:projectId/tasks	Add a task to a project	✅
-GET	/api/projects/:projectId/tasks	List all tasks under a project	✅
-PUT	/api/tasks/:taskId	Update a task by ID	✅
-DELETE	/api/tasks/:taskId	Delete a task by ID	✅
-```
+| Method | Endpoint              | Description              | Auth |
+|--------|-----------------------|--------------------------|:----:|
+| `POST` | `/api/users/register` | Register new user        | 🔓   |
+| `POST` | `/api/users/login`    | Login and return JWT     | 🔓   |
+
+---
+
+### 📁 Project Routes
+
+| Method  | Endpoint              | Description                 | Auth |
+|---------|-----------------------|-----------------------------|:----:|
+| `POST`  | `/api/projects`       | Create a new project        | 🔒   |
+| `GET`   | `/api/projects`       | Get all projects            | 🔒   |
+| `GET`   | `/api/projects/:id`   | Get a single project by ID  | 🔒   |
+| `PUT`   | `/api/projects/:id`   | Update a project            | 🔒   |
+| `DELETE`| `/api/projects/:id`   | Delete a project            | 🔒   |
+
+---
+
+### ✅ Task Routes
+
+| Method  | Endpoint                                | Description                  | Auth |
+|---------|-----------------------------------------|------------------------------|:----:|
+| `POST`  | `/api/projects/:projectId/tasks`        | Create a task under project  | 🔒   |
+| `GET`   | `/api/projects/:projectId/tasks`        | Get tasks for a project      | 🔒   |
+| `PUT`   | `/api/tasks/:taskId`                    | Update a task by ID          | 🔒   |
+| `DELETE`| `/api/tasks/:taskId`                    | Delete a task by ID          | 🔒   |
+
+---
+
+### 🔐 Legend
+
+- 🔓 = Public (no token required)
+- 🔒 = Protected (JWT token required)
+
+---
+
+## 📫 Testing with Postman
+
+1. Import this API manually in Postman or create a new collection.
+2. Register a new user:  
+   `POST /api/users/register` with JSON body:
+   ```json
+   {
+     "username": "yusuf",
+     "email": "yusuf@example.com",
+     "password": "123456"
+   }
+   ```
+3. Login:  
+   `POST /api/users/login` → Save the returned token
+4. Set `Authorization: Bearer <your_token>` for protected routes
+5. Test project and task endpoints as needed
+
 ---
 
 ## 🧑🏿‍💻 Author

@@ -9,11 +9,6 @@ TaskMaster API is the secure, RESTful backend service for managing productivity 
 ![JWT](https://img.shields.io/badge/JWT-Auth-blue?logo=jsonwebtokens)
 ![Bcrypt](https://img.shields.io/badge/Bcrypt-Hashing-yellow?logo=security)
 ![REST](https://img.shields.io/badge/API-Type--REST-blue)
-![ESM](https://img.shields.io/badge/Modules-Type--ESM-orange)
-
-
-
-**Node.js** • **Express** • **MongoDB** • **Mongoose** • **JWT** • **Bcrypt** • **REST API**
 
 ---
 
@@ -106,6 +101,29 @@ taskmaster-api/
   - Organized by `controllers/`, `models/`, `routes/`, and `utils/`
   - Clean separation of concerns
 
+---
+```
+📮 API Endpoints
+👤 Users
+🔧 Method	🛣️ Endpoint	📄 Description	🔐 Auth Required
+POST	/api/users/register	Create a new user account	❌
+POST	/api/users/login	Authenticate and get token	❌
+
+📁 Projects
+🔧 Method	🛣️ Endpoint	📄 Description	🔐 Auth Required
+POST	/api/projects	Create a new project	✅
+GET	/api/projects	Get all projects owned by user	✅
+GET	/api/projects/:id	Get a specific project by ID	✅
+PUT	/api/projects/:id	Update a project by ID	✅
+DELETE	/api/projects/:id	Delete a project by ID	✅
+
+✅ Tasks
+🔧 Method	🛣️ Endpoint	📄 Description	🔐 Auth Required
+POST	/api/projects/:projectId/tasks	Add a task to a project	✅
+GET	/api/projects/:projectId/tasks	List all tasks under a project	✅
+PUT	/api/tasks/:taskId	Update a task by ID	✅
+DELETE	/api/tasks/:taskId	Delete a task by ID	✅
+```
 ---
 
 ## 🧑🏿‍💻 Author

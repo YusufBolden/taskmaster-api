@@ -15,5 +15,10 @@ app.use('/api/users', userRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/projects', taskRoutes); // Nested under /projects/:projectId/tasks
 
+app.get('/', (req, res) => {
+  res.send('Connected to backend API');
+});
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

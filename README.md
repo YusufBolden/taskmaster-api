@@ -12,6 +12,11 @@ TaskMaster API is the secure, RESTful backend service for managing productivity 
 
 ---
 
+## 🚢 Live Deployment
+[View live on Render](https://taskmaster-backend-api-yf49.onrender.com)
+
+---
+
 ## 🚀 Local Setup
 
 To set up and run this project locally:
